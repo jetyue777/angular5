@@ -4,7 +4,12 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import {Hero} from '../hero';
+import {HEROES} from '../mock-heroes';
 
+/*
+ Styles and stylesheets identified in @Component metadata are scoped to that specific component. The heroes.component.css styles apply only to the HeroesComponent and don't affect the outer HTML or the HTML in any other component.
+ */
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -15,8 +20,15 @@ import { Component, OnInit } from '@angular/core';
  The ngOnInit is a lifecycle hook Angular calls ngOnInit shortly after creating a component. It's a good place to put initialization logic.
  */
 export class HeroesComponent implements OnInit {
+  selectedHero: Hero;
+
+  heroes = HEROES;
 
   constructor() { }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 
   ngOnInit() {
   }
