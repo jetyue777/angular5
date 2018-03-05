@@ -6,8 +6,11 @@ import { AppComponent } from './app.component';
 // automatically added by angular cli create component
 import { HeroesComponent } from './heroes/heroes.component';
 
-import { FormsModule } from '@angular/forms';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroService } from './hero.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 /*
@@ -23,13 +26,17 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component'; // <-
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDetailComponent // Every component must be declared in exactly one NgModule.
+    HeroDetailComponent,
+    MessagesComponent // Every component must be declared in exactly one NgModule.
   ],
   imports: [
     BrowserModule,
     FormsModule // Then add FormsModule to the @NgModule metadata's imports array, which contains a list of external modules that the app needs.
   ],
-  providers: [],
+  providers: [
+    HeroService,
+    MessageService // The providers array tells Angular to create a single, shared instance of HeroService and inject into any class that asks for it.
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

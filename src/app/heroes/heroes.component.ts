@@ -5,7 +5,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
-import {HEROES} from '../mock-heroes';
+import { HeroService } from '../hero.service';
+
 
 /*
  Styles and stylesheets identified in @Component metadata are scoped to that specific component. The heroes.component.css styles apply only to the HeroesComponent and don't affect the outer HTML or the HTML in any other component.
@@ -22,15 +23,53 @@ import {HEROES} from '../mock-heroes';
 export class HeroesComponent implements OnInit {
   selectedHero: Hero;
 
-  heroes = HEROES;
+  heroes: Hero[];
 
-  constructor() { }
+  constructor(private heroService: HeroService) {
+    /*
+     The parameter simultaneously defines a private heroService property and identifies it as a HeroService injection site.
+
+     When Angular creates a HeroesComponent, the Dependency Injection system sets the heroService parameter to the singleton instance of HeroService.
+     */
+
+    /*
+     While you could call getHeroes() in the constructor, that's not the best practice.
+
+     Reserve the constructor for simple initialization such as wiring constructor parameters to properties. The constructor shouldn't do anything. It certainly shouldn't call a function that makes HTTP requests to a remote server as a real data service would.
+     */
+  }
+
+  // The HeroService.getHeroes method used to return a Hero[]. Now it returns an Observable<Hero[]>.
+
+  /*getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }*/
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(
+        heroesResponse => this.heroes = heroesResponse
+      );
+
+    /*
+     Observable.subscribe() is the critical difference.
+
+     The previous version assigns an array of heroes to the component's heroes property. The assignment occurs synchronously, as if the server could return heroes instantly or the browser could freeze the UI while it waited for the server's response.
+
+     That won't work when the HeroService is actually making requests of a remote server.
+
+     The new version waits for the Observable to emit the array of heroes— which could happen now or several minutes from now. Then subscribe passes the emitted array to the callback, which sets the component's heroes property.
+     */
+  }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
 
   ngOnInit() {
+    /*
+     call getHeroes() inside the ngOnInit lifecycle hook and let Angular call ngOnInit at an appropriate time after constructing a HeroesComponent instance.
+     */
+    this.getHeroes();
   }
 
 }
