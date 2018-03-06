@@ -5,16 +5,11 @@
 
 -->
   <!--The parentheses around click tell Angular to listen for the <li> element's click event. When the user clicks in the <li>, Angular executes the onSelect(hero) expression.-->
-  <li *ngFor="let hero of heroes"
-      (click)="onSelect(hero)"
-      [class.selected]="hero === selectedHero">
+  <li *ngFor="let hero of heroes">
     <!--The Angular class binding makes it easy to add and remove a CSS class conditionally. Just add [class.some-css-class]="some-condition" to the element you want to style.-->
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
   </li>
 </ul>
 
-
-<!--
-[hero]="selectedHero" is an Angular property binding.
--->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>

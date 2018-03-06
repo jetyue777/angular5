@@ -11,6 +11,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService } from './hero.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 /*
@@ -27,11 +29,13 @@ import { MessageService } from './message.service';
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent // Every component must be declared in exactly one NgModule.
+    MessagesComponent,
+    DashboardComponent // Every component must be declared in exactly one NgModule.
   ],
   imports: [
     BrowserModule,
-    FormsModule // Then add FormsModule to the @NgModule metadata's imports array, which contains a list of external modules that the app needs.
+    FormsModule,
+    AppRoutingModule // Then add FormsModule to the @NgModule metadata's imports array, which contains a list of external modules that the app needs.
   ],
   providers: [
     HeroService,
