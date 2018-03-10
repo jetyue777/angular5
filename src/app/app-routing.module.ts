@@ -53,6 +53,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule ] //Add an @NgModule.exports array with RouterModule in it. Exporting RouterModule makes router directives available for use in the AppModule components that will need them.
+
+  //export in this module so root module can import
 })
 
 
