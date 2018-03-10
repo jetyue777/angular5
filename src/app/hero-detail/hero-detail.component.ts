@@ -43,6 +43,7 @@ export class HeroDetailComponent implements OnInit {
    The location is an Angular service for interacting with the browser. You'll use it later to navigate back to the view that navigated here.
    */
 
+  //ngOnInit is called when component is initialized (rendered)
   ngOnInit(): void {
     this.getHero();
   }
@@ -71,5 +72,4 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
-
 }

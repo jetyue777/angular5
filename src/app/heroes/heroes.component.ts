@@ -21,7 +21,6 @@ import { HeroService } from '../hero.service';
  The ngOnInit is a lifecycle hook Angular calls ngOnInit shortly after creating a component. It's a good place to put initialization logic.
  */
 export class HeroesComponent implements OnInit {
-  selectedHero: Hero;
 
   heroes: Hero[];
 
@@ -61,9 +60,6 @@ export class HeroesComponent implements OnInit {
      */
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
 
   add(name: string): void {
     name = name.trim();
