@@ -13,12 +13,12 @@
   <!--The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list. Don't forget the asterisk (*) in front of ngFor. It's a critical part of the syntax.
 
 -->
-  <!--The parentheses around click tell Angular to listen for the <li> element's click event. When the user clicks in the <li>, Angular executes the onSelect(hero) expression.-->
   <li *ngFor="let hero of heroes">
     <!--The Angular class binding makes it easy to add and remove a CSS class conditionally. Just add [class.some-css-class]="some-condition" to the element you want to style.-->
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
+    <!--The parentheses around click tell Angular to listen for the <li> element's click event. When the user clicks in the <li>, Angular executes the onSelect(hero) expression.-->
     <button class="delete" title="delete hero"
             (click)="delete(hero)">x</button>
   </li>

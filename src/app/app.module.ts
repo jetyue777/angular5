@@ -24,7 +24,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 
  Some of the metadata is in the @Component decorators that you added to your component classes. Other critical metadata is in @NgModule decorators.
 
- The most important @NgModuledecorator annotates the top-level AppModule class.
+ The most important @NgModule decorator annotates the top-level AppModule class.
 
  The Angular CLI generated an AppModule class in src/app/app.module.ts when it created the project. This is where you opt-in to the FormsModule.
  */
