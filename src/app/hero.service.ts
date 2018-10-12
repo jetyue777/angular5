@@ -26,9 +26,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable()
 export class HeroService {
 
-  constructor(
-    private httpClient: HttpClient,
-    private messageService: MessageService) {
+  constructor(private httpClient: HttpClient, private messageService: MessageService) {
     /*
      Modify the constructor with a parameter that declares a private messageService property. Angular will inject the singleton MessageService into that property when it creates the HeroService.
 

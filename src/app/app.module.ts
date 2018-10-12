@@ -56,6 +56,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     MessageService
      // The providers array tells Angular to create a single, shared instance of HeroService and inject into any class that asks for it.
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
+
 })
 export class AppModule { }
